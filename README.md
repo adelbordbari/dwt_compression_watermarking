@@ -23,3 +23,6 @@ shows extracted watermark + inversed to see better (it's easier sometimes!)
 __RUNME_dwt_DEwatermarking.m__ uses the result from watermarking and extracts the watermark. only shows, does not save.
 though can be saved from matlab gui
 
+---
+`.pdf` file includes all the explanations and some test cases, future works (don't hesitate to fork!) and references.
+this is the final project for _FUM 01-1 A-DIP_ course.
