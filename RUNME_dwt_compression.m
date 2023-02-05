@@ -28,17 +28,31 @@ w = 'db3';
 Xc = wcompress('u','mask.wtc');
 delete('mask.wtc')
 
+
+thr = adaptthresh(Xc); %local threshold
+% set thr manually for global thr
+Xt = wthresh(Xc,'h',thr); %apply threshold
+
 X = double(X);
 D = abs(X-Xc).^2;
 mse  = sum(D(:))/numel(X);
 psnr = 10*log10(255*255/mse);
 
 figure
+image(X);
+title("Org");
+colormap(map);
+
+figure
 image(Xc);
 title(strcat(num2str(cr),'|',num2str(mse),'|',num2str(psnr)));
 colormap(map);
 
+D = abs(X-Xt).^2;
+thr_mse  = sum(D(:))/numel(X);
+thr_psnr = 10*log10(255*255/mse);
+
 figure
-image(X);
-title("Org");
+image(Xt);
+title(strcat("thr", '|', num2str(thr_mse),'|',num2str(thr_psnr)));
 colormap(map);
